@@ -1,0 +1,95 @@
+﻿<Window x:Class="Recetario.Ventanas.AlimentosVentana"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recetario.Ventanas"
+        xmlns:Componentes="clr-namespace:Recetario.Componentes"
+        mc:Ignorable="d"
+        Title="AlimentosVentana" Height="450" Width="850" MinHeight="450" MinWidth="850" FontSize="18">
+    <Grid>
+        <!-- Menu Opciones -->
+        <Componentes:Menu VerticalAlignment="Top"/>
+        <!-- #region Cabecera -->
+        <!-- Boton Principal-->
+        <Button x:Name="BtnPrincipal" Content="Principal" Foreground="White" FontWeight="Bold" Margin="5,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="250" Background="#225AFF" BorderThickness="1.5" BorderBrush="Black" MouseEnter="BtnPrincipal_RatonDentro" MouseLeave="BtnPrincipal_RatonFuera" Click="BtnPrincipal_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!-- Boton Cargar-->
+        <Button x:Name="BtnCargar" Content="&lt;    Cargar" Foreground="White" FontWeight="Bold" Margin="315,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="125" Background="#585858" BorderThickness="1.5" BorderBrush="Black" MouseEnter="BtnCargar_RatonDentro" MouseLeave="BtnCargar_RatonFuera" Click="BtnCargar_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!-- Boton Eliminar -->
+        <Button x:Name="BtnEliminar" Style="{StaticResource BtnSinHover}" Margin="450,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnEliminar_RatonDentro" MouseLeave="BtnEliminar_RatonFuera" Click="BtnEliminar_Click">
+            <Image x:Name="ImgBtnEliminar" Source="/Recursos/BtnEliminar.png"/>
+        </Button>
+        <!-- Boton Lista de la Compra -->
+        <Button Style="{StaticResource BtnSinHover}" Margin="0,30,160,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnListaCompra_RatonDentro" MouseLeave="BtnListaCompra_RatonFuera" Click="BtnListaCompra_Click">
+            <Image x:Name="ImgBtnListaCompra" Source="/Recursos/BtnListaCompra.png"/>
+        </Button>
+        <!-- Boton Inventario -->
+        <Button x:Name="BtnInventario" Content="Mi Inventario" Foreground="White" FontWeight="Bold" Margin="0,30,5,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Height="50" Background="#225AFF" BorderThickness="1.5" BorderBrush="Black" MouseEnter="BtnInventario_RatonDentro" MouseLeave="BtnInventario_RatonFuera" Click="BtnInventario_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!-- #endregion -->
+        <!-- Contenedor Alimento -->
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5,85,0,5" HorizontalAlignment="Left" Width="250" Background="#E6E6E6" CornerRadius="5">
+            <StackPanel>
+                <Label x:Name="LblCrearEditar" Content="Crear Alimento" Margin="5,5,5,0" HorizontalContentAlignment="Center" BorderBrush="Black" BorderThickness="1"/>
+                <!-- Imagen de Alimento -->
+                <Grid MouseLeave="AlimentoImagen_RatonFuera">
+                    <!-- Imagen Alimento -->
+                    <Image x:Name="AlimentoImagen" Source="/Recursos/NoImagen.png" Margin="5,5,5,0" Stretch="Uniform" VerticalAlignment="Top" Height="125" MaxHeight="250" MouseEnter="AlimentoImagen_RatonDentro"/>
+                    <!-- Imagen Editar Imagen -->
+                    <Image x:Name="AlimentoImagenEditar" Source="/Recursos/EditarImagen.png" Margin="5,16,5,0" Stretch="Uniform" VerticalAlignment="Top" Height="100" MaxHeight="225" Visibility="Collapsed"  MouseLeftButtonUp="ImagenEditar_Click"/>
+                </Grid>
+                <!-- Texto Nombre Alimento -->
+                <Label Content="Nombre" Foreground="White" FontWeight="Bold" FontSize="12"  Margin="5,5,5,0" Height="25" BorderThickness="1" BorderBrush="Black" Background="#255AFF" HorizontalContentAlignment="Center" Padding="2"/>
+                <!-- Introducir Nombre del Alimento -->
+                <Border Margin="5,-1,5,0" BorderBrush="Black" BorderThickness="1" Background="White">
+                    <Grid Height="45">
+                        <TextBox x:Name="TxtNombreAlimento" LostFocus="TxtNombreReceta_LostFocus" Foreground="#323232" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" BorderThickness="0" Background="White"/>
+                        <TextBox x:Name="TxtMarcaNombreReceta" GotFocus="TxtMarcaNombreReceta_Focus" Text="Nombre" Foreground="Gray" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" BorderThickness="0" Background="White" IsReadOnly="True" Visibility="Collapsed"/>
+                    </Grid>
+                </Border>
+                <!-- Texto Categoria Alimento -->
+                <Label Content="Categoria" Foreground="White" FontWeight="Bold" FontSize="12" Margin="5,5,5,0" Height="25" BorderThickness="1" BorderBrush="Black" Background="#255AFF" HorizontalContentAlignment="Center" Padding="2"/>
+                <!-- Seleccionar Categoria del Alimento-->
+                <Border Margin="5,-1,5,0" BorderBrush="Black" BorderThickness="1">
+                    <ComboBox x:Name="CmbCategoriasEdicion" Foreground="#323232" FontSize="14" Height="30" BorderThickness="0" DisplayMemberPath="Nombre" SelectedValuePath="Id" IsEditable="False"/>
+                </Border>
+                <Grid Margin="5,0,5,5" Height="60">
+                    <!-- Boton Confirmar -->
+                    <Button x:Name="BtnConfirmar" Style="{StaticResource BtnSinHover}" Margin="15,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" MouseEnter="BtnConfirmar_RatonDentro" MouseLeave="BtnConfirmar_RatonFuera" Click="BtnConfirmar_Click">
+                        <Image x:Name="ImgBtnConfirmar" Source="/Recursos/BtnConfirmar.png"/>
+                    </Button>
+                    <!-- Boton Cancelar -->
+                    <Button x:Name="BtnCancelar" Style="{StaticResource BtnSinHover}" Margin="15,0,15,0" HorizontalAlignment="Right" Height="50" Width="50" MouseEnter="BtnCancelar_RatonDentro" MouseLeave="BtnCancelar_RatonFuera" Click="BtnCancelar_Click">
+                        <Image x:Name="ImgBtnCancelar" Source="/Recursos/BtnCancelar.png"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Border>
+        <!-- Contenedor de Lista de Alimentos -->
+        <Border BorderBrush="Black" BorderThickness="1" Margin="315,85,5,5" Background="#E6E6E6" CornerRadius="5">
+            <Grid>
+                <!-- ComboBox Seleccionar categoria Alimento -->
+                <ComboBox x:Name="CmbCategoriaAlimentos" SelectedValuePath="Id" DisplayMemberPath="Nombre" SelectionChanged="CmbCategoriaAlimentos_CambioSeleccion" VerticalAlignment="Top"/>
+                <!-- ListBox de los Alimentos segun su categoria -->
+                <ListBox x:Name="LstAlimentos" SelectionMode="Single" SelectedValuePath="Id" DisplayMemberPath="Nombre" Margin="0,25,0,0"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

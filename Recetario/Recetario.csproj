@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Recursos\BtnAdd(Encima)(Click).png" />
+    <None Remove="Recursos\BtnAdd(Encima).png" />
+    <None Remove="Recursos\BtnAdd.png" />
+    <None Remove="Recursos\BtnCancelar%28Encima%29%28Click%29.png" />
+    <None Remove="Recursos\BtnCancelar%28Encima%29.png" />
+    <None Remove="Recursos\BtnCancelar.png" />
+    <None Remove="Recursos\BtnConfirmar%28Encima%29%28Click%29.png" />
+    <None Remove="Recursos\BtnConfirmar%28Encima%29.png" />
+    <None Remove="Recursos\BtnConfirmar%28Inabilitado%29.png" />
+    <None Remove="Recursos\BtnConfirmar.png" />
+    <None Remove="Recursos\BtnEditar%28Encima%29%28Click%29.png" />
+    <None Remove="Recursos\BtnEditar%28Encima%29.png" />
+    <None Remove="Recursos\BtnEditar.png" />
+    <None Remove="Recursos\BtnEliminar%28Encima%29%28Click%29.png" />
+    <None Remove="Recursos\BtnEliminar%28Encima%29.png" />
+    <None Remove="Recursos\BtnEliminar.png" />
+    <None Remove="Recursos\BtnFavorito%28NoSeleccionado%29%28Encima%29.png" />
+    <None Remove="Recursos\BtnFavorito%28NoSeleccionado%29.png" />
+    <None Remove="Recursos\BtnFavorito%28Seleccionado%29%28Encima%29.png" />
+    <None Remove="Recursos\BtnFavorito%28Seleccionado%29.png" />
+    <None Remove="Recursos\BtnListaCompra(Encima)(Click).png" />
+    <None Remove="Recursos\BtnListaCompra(Encima).png" />
+    <None Remove="Recursos\BtnListaCompra.png" />
+    <None Remove="Recursos\BtnQuitar%28Encima%29%28Click%29.png" />
+    <None Remove="Recursos\BtnQuitar%28Encima%29.png" />
+    <None Remove="Recursos\BtnQuitar.png" />
+    <None Remove="Recursos\EditarImagen%28Encima%29.png" />
+    <None Remove="Recursos\EditarImagen.png" />
+    <None Remove="Recursos\Nevera.png" />
+    <None Remove="Recursos\NeveraBlanco.png" />
+    <None Remove="Recursos\NoImagen.png" />
+    <None Remove="Recursos\PersonasAzul.png" />
+    <None Remove="Recursos\Reloj.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Recursos\BtnCancelar(Encima)(Click).png" />
+    <Resource Include="Recursos\BtnCancelar(Encima).png" />
+    <Resource Include="Recursos\BtnCancelar.png" />
+    <Resource Include="Recursos\EditarImagen(Encima).png" />
+    <Resource Include="Recursos\EditarImagen.png" />
+    <Resource Include="Recursos\NoImagen.png" />
+    <Resource Include="Recursos\PersonasAzul.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Recursos\BtnAdd%28Encima%29%28Click%29.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Recursos\BtnAdd%28Encima%29.png" />
+    <Resource Include="Recursos\BtnAdd.png" />
+    <Resource Include="Recursos\BtnListaCompra%28Encima%29%28Click%29.png" />
+    <Resource Include="Recursos\BtnListaCompra%28Encima%29.png" />
+    <Resource Include="Recursos\BtnListaCompra.png" />
+    <Resource Include="Recursos\BtnConfirmar(Encima)(Click).png" />
+    <Resource Include="Recursos\BtnConfirmar(Encima).png" />
+    <Resource Include="Recursos\BtnConfirmar(Inabilitado).png" />
+    <Resource Include="Recursos\BtnConfirmar.png" />
+    <Resource Include="Recursos\BtnEditar(Encima)(Click).png" />
+    <Resource Include="Recursos\BtnEditar(Encima).png" />
+    <Resource Include="Recursos\BtnEditar.png" />
+    <Resource Include="Recursos\BtnEliminar(Encima)(Click).png" />
+    <Resource Include="Recursos\BtnEliminar(Encima).png" />
+    <Resource Include="Recursos\BtnEliminar.png" />
+    <Resource Include="Recursos\BtnFavorito(NoSeleccionado)(Encima).png" />
+    <Resource Include="Recursos\BtnFavorito(NoSeleccionado).png" />
+    <Resource Include="Recursos\BtnFavorito(Seleccionado)(Encima).png" />
+    <Resource Include="Recursos\BtnFavorito(Seleccionado).png" />
+    <Resource Include="Recursos\BtnQuitar(Encima)(Click).png" />
+    <Resource Include="Recursos\BtnQuitar(Encima).png" />
+    <Resource Include="Recursos\BtnQuitar.png" />
+    <Resource Include="Recursos\Nevera.png" />
+    <Resource Include="Recursos\NeveraBlanco.png" />
+    <Resource Include="Recursos\Reloj.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Recursos\BBDD_Datos.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

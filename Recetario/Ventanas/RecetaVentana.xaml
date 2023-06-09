@@ -1,0 +1,130 @@
+﻿<Window x:Class="Recetario.Ventanas.RecetaVentana"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recetario.Ventanas"
+        xmlns:Componentes="clr-namespace:Recetario.Componentes"
+        mc:Ignorable="d"
+        Title="RecetaVentana" Height="475" Width="850" MinHeight="450" MinWidth="850" FontSize="18" 
+        SizeChanged="CambioTamañoVentana" Closing="CerrarVentana">
+    <!-- Contenedor de la ventana -->
+    <Grid>
+        <!-- Menu Opciones -->
+        <Componentes:Menu VerticalAlignment="Top"/>
+        <!-- #region Cabecera -->
+        <!-- Boton Principal-->
+        <Button x:Name="BtnPrincipal" Content="Principal" Foreground="White" FontWeight="Bold" Margin="5,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="250" Background="#225AFF" BorderThickness="1.5" BorderBrush="Black" MouseEnter="BtnPrincipal_RatonDentro" MouseLeave="BtnPrincipal_RatonFuera" Click="BtnPrincipal_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!-- Boton Editar -->
+        <Button x:Name="BtnEditar" Style="{StaticResource BtnSinHover}" Margin="260,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnEditar_RatonDentro" MouseLeave="BtnEditar_RatonFuera" Click="BtnEditar_Click">
+            <Image x:Name="ImgBtnEditar" Source="/Recursos/BtnEditar.png"/>
+        </Button>
+        <!-- Boton Confirmar -->
+        <Button x:Name="BtnConfirmar" Style="{StaticResource BtnSinHover}" Margin="260,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnConfirmar_RatonDentro" MouseLeave="BtnConfirmar_RatonFuera" Click="BtnConfirmar_Click">
+            <Image x:Name="ImgBtnConfirmar" Source="/Recursos/BtnConfirmar.png"/>
+        </Button>
+        <!-- Boton Cancelar -->
+        <Button x:Name="BtnCancelar" Style="{StaticResource BtnSinHover}" Margin="315,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnCancelar_RatonDentro" MouseLeave="BtnCancelar_RatonFuera" Click="BtnCancelar_Click">
+            <Image x:Name="ImgBtnCancelar" Source="/Recursos/BtnCancelar.png"/>
+        </Button>
+        <!-- Boton Eliminar -->
+        <Button x:Name="BtnEliminar" Style="{StaticResource BtnSinHover}" Margin="370,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnEliminar_RatonDentro" MouseLeave="BtnEliminar_RatonFuera" Click="BtnEliminar_Click">
+            <Image x:Name="ImgBtnEliminar" Source="/Recursos/BtnEliminar.png"/>
+        </Button>
+        <!-- Boton Lista de la Compra -->
+        <Button Style="{StaticResource BtnSinHover}" Margin="0,30,160,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnListaCompra_RatonDentro" MouseLeave="BtnListaCompra_RatonFuera" Click="BtnListaCompra_Click">
+            <Image x:Name="ImgBtnListaCompra" Source="/Recursos/BtnListaCompra.png"/>
+        </Button>
+        <!-- Boton Inventario -->
+        <Button x:Name="BtnInventario" Content="Mi Inventario" Foreground="White" FontWeight="Bold" Margin="0,30,5,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Height="50" Background="#225AFF" BorderThickness="1.5" BorderBrush="Black" MouseEnter="BtnInventario_RatonDentro" MouseLeave="BtnInventario_RatonFuera" Click="BtnInventario_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!-- #endregion -->
+        <!-- Contenedor Descripcion de la receta -->
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5,85,0,5" HorizontalAlignment="Left" Width="250" Background="#E6E6E6" CornerRadius="5">
+            <StackPanel>
+                <!-- Contenedor Imagen de la receta y Boton Favorito-->
+                <Grid MouseLeave="RecetaImagen_SalirRaton">
+                    <!-- Imgen de la receta -->
+                    <Image x:Name="Receta_Imagen" Source="/Recursos/NoImagen.png" Margin="5,5,5,0" Stretch="Uniform" VerticalAlignment="Top" Height="125" MaxHeight="250" MouseEnter="RecetaImagen_EntrarRaton"/>
+                    <Image x:Name="Receta_Imagen_Editar" Source="/Recursos/EditarImagen.png" Margin="5,16,5,0" Stretch="Uniform" VerticalAlignment="Top" Height="100" MaxHeight="225" Visibility="Collapsed"  MouseLeftButtonUp="RecetaComponente_Click"/>
+                    <!-- Boton Favorito -->
+                    <Button x:Name="BtnFavorito" Style="{StaticResource BtnSinHover}" Margin="5" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" MouseEnter="BtnFavorito_RatonDentro" MouseLeave="BtnFavorito_RatonFuera" Click="BtnFavorito_Click">
+                        <Image x:Name="BtnFavorito_Imagen" Source="/Recursos/BtnFavorito(NoSeleccionado).png"/>
+                    </Button>
+                </Grid>
+                <!-- Label de texto Nombre de la receta -->
+                <Label Content="Nombre" Foreground="White" FontWeight="Bold" FontSize="12"  Margin="5,5,5,0" Height="25" BorderThickness="1" BorderBrush="Black" Background="#255AFF" HorizontalContentAlignment="Center" Padding="2"/>
+                <!-- Introducir/Ver Nombre de la receta -->
+                <Border Margin="5,-1,5,0" BorderBrush="Black" BorderThickness="1" Background="White">
+                    <Grid Height="45">
+                        <TextBox x:Name="TxtNombreReceta" LostFocus="Nombre_PerderFocus" Foreground="#323232" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" BorderThickness="0" Background="White" IsReadOnly="True"/>
+                        <TextBox x:Name="TxtMarcaNombreReceta" GotFocus="Nombre_Focus" Text="Nombre" Foreground="Gray" FontSize="14" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" BorderThickness="0" Background="White" IsReadOnly="True" Visibility="Collapsed"/>
+                    </Grid>
+                </Border>
+                <!-- Label de texto Categoria de la receta -->
+                <Label Content="Categoria" Foreground="White" FontWeight="Bold" FontSize="12" Margin="5,5,5,0" Height="25" BorderThickness="1" BorderBrush="Black" Background="#255AFF" HorizontalContentAlignment="Center" Padding="2"/>
+                <!-- Seleccionar/Ver Categoria de la receta -->
+                <Border Margin="5,-1,5,0" BorderBrush="Black" BorderThickness="1">
+                    <ComboBox x:Name="ComboBoxTipos" Foreground="#323232" FontSize="14" Height="30" BorderThickness="0" DisplayMemberPath="Nombre" SelectedValuePath="Id" IsEditable="False" IsEnabled="False"/>
+                </Border>
+                <!-- Contenedor de raciones y tiempo de la receta -->
+                <WrapPanel Margin="5,5,5,0" Background="White">
+                    <!-- Texto Raciones de la receta -->
+                    <Label Content="Raciones" Foreground="White" FontWeight="Bold" FontSize="12" Height="35" Width="60" BorderThickness="1" BorderBrush="Black" Background="#255AFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
+                    <!-- Introducir/Ver Raciones de la receta -->
+                    <Border BorderThickness="1" BorderBrush="Black" Height="35" Width="143">
+                        <WrapPanel>
+                            <Border Margin="-2,-1,-2,-1" BorderThickness="1" BorderBrush="Black">
+                                <TextBox x:Name="txtRacionesReceta" Text="00"  Height="34" Width="144" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" PreviewTextInput="HorasMinutosReceta_PreviewTextInput" MaxLength="2"/>
+                            </Border>
+                        </WrapPanel>
+                    </Border>
+                    <!-- Imagen de Raciones -->
+                    <Border BorderThickness="1" BorderBrush="Black" Height="35" Width="35">
+                        <Image Source="/Recursos/PersonasAZUL.png"/>
+                    </Border>
+                </WrapPanel>
+                <WrapPanel Margin="5,-1,5,5" Background="White">
+                    <!-- Texto Tiempo de la receta -->
+                    <Label Content="Tiempo" Foreground="White" FontWeight="Bold" FontSize="12" Height="35" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" Background="#255AFF" Padding="0"/>
+                    <!-- Texto Tiempo de la receta -->
+                    <Border Margin="-1,0,0,0" BorderThickness="1" BorderBrush="Black" Height="35" Width="145">
+                        <WrapPanel>
+                            <TextBox x:Name="txtHorasReceta" Text="00" Height="33" Width="39" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" PreviewTextInput="HorasMinutosReceta_PreviewTextInput" MaxLength="2"/>
+                            <Label Content="h" FontSize="12" Height="33" Width="32" BorderThickness="1" BorderBrush="Transparent" Background="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <TextBox x:Name="txtMinutosReceta" Text="00" Height="33" Width="39" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" PreviewTextInput="HorasMinutosReceta_PreviewTextInput" MaxLength="2"/>
+                            <Label Content="min" FontSize="12" HorizontalAlignment="Left" Height="33" Width="32" Background="White" BorderThickness="1" BorderBrush="Transparent" VerticalContentAlignment="Center"/>
+                        </WrapPanel>
+                    </Border>
+                    <!-- Imagen de Tiempo -->
+                    <Border Margin="-1,0,0,0" Height="35" Width="35" BorderThickness="1" BorderBrush="Black">
+                        <Image Source="/Recursos/Reloj.png"/>
+                    </Border>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+        <!-- Contenedor de alimentos -->
+        <Border BorderBrush="Black" BorderThickness="1" Margin="260,85,5,0" Background="#E6E6E6" CornerRadius="5" Height="125" VerticalAlignment="Top">
+            <ScrollViewer x:Name="ContentAlimentos" Margin="3,3,3,3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <WrapPanel x:Name="ContAlimentos" HorizontalAlignment="Center" Orientation="Horizontal"/>
+            </ScrollViewer>
+        </Border>
+        <!-- Contenedor de pasos -->
+        <Border BorderBrush="Black" BorderThickness="1" Margin="260,214,5,5" Background="#E6E6E6" CornerRadius="5">
+            <ScrollViewer x:Name="ContentPasos" Margin="3,3,3,3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <WrapPanel x:Name="ContPasos" HorizontalAlignment="Center" Orientation="Vertical"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

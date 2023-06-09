@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Recetario.Componentes.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Recetario.Componentes"
+             xmlns:comandos="clr-namespace:Recetario.Comandos"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <!-- Barra Menu -->
+    <Menu FontSize="17">
+        <!-- Item de Barra Menu: Archivo -->
+        <MenuItem Header="Archivo" Width="75">
+            <!-- Item de Archivo: Salir -->
+            <MenuItem Header="Salir" Command="comandos:ComandosMenu.Salir"/>
+        </MenuItem>
+        <!-- Item de Barra Menu: Util -->
+        <MenuItem Header="Util">
+            <!-- Item de Util: Ventanas -->
+            <MenuItem Header="Ventanas">
+                <!-- Item de Ventanas: Principal -->
+                <MenuItem Header="Principal" Command="comandos:ComandosMenu.Principal"/>
+                <!-- Item de Ventanas: Inventario -->
+                <MenuItem Header="Inventario" Command="comandos:ComandosMenu.Inventario"/>
+                <!-- Item de Ventanas: Lista Compra -->
+                <MenuItem Header="Lista Compra" Command="comandos:ComandosMenu.ListaCompra"/>
+            </MenuItem>
+            <!-- Item de Util: Alimentos -->
+            <MenuItem Header="Alimentos" Command="comandos:ComandosMenu.Alimentos"/>
+            <!-- Item de Util: Exportar a JSON -->
+            <MenuItem Header="Exportar a JSON" Command="comandos:ComandosMenu.ExportarJSON"/>
+        </MenuItem>
+        <!-- Item de Barra Menu: Ayuda -->
+        <MenuItem Header="Ayuda">
+            <!-- Item de Ayuda: AcercaDe -->
+            <MenuItem Header="AcercaDe" Command="comandos:ComandosMenu.AcercaDe"/>
+        </MenuItem>
+    </Menu>
+</UserControl>

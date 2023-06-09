@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Recetario.Componentes.RecetaPasosComp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Recetario.Componentes"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="500" MinHeight="50" MinWidth="500">
+    <!-- Contenedor del componenete -->
+    <Grid>
+        <!-- Texto Numero de Paso -->
+        <Label x:Name="txtNumeroPaso" Content="00" FontSize="30" FontWeight="Bold" Background="White" BorderBrush="Black" BorderThickness="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="50"/>
+        <!-- Texto Descripcion -->
+        <Border x:Name="BordeDescripcion" Margin="49,0,0,0" BorderBrush="Black" BorderThickness="1" Background="White">
+            <Grid>
+                <TextBox x:Name="txtDescripcion" LostFocus="TxtDescripcion_PerderFocus" FontSize="14" BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="txtMarcaDescripcion" GotFocus="TxtDescripcion_Focus" Text="Descripcion" Foreground="Gray" FontSize="14" BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" IsReadOnly="True" Visibility="Collapsed"/>
+            </Grid>
+        </Border>
+        <!-- Boton Quitar -->
+        <Button x:Name="BtnQuitar" Style="{StaticResource BtnSinHover}" Width="50" Height="{Binding ElementName=txtDescripcionPaso, Path=Height}" Background="#990000" HorizontalAlignment="Right" MouseEnter="BtnQuitar_RatonDentro" MouseLeave="BtnQuitar_RatonFuera" Click="BtnQuitar_Click">
+            <Image x:Name="ImagenBtnQuitar" Source="/Recursos/BtnQuitar.png" Stretch="Uniform"/>
+        </Button>
+    </Grid>
+</UserControl>

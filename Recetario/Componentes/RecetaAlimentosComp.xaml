@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Recetario.Componentes.RecetaAlimentosComp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Recetario.Componentes"
+             mc:Ignorable="d" 
+              d:DesignHeight="25" d:DesignWidth="250" MinHeight="25" MinWidth="250" FontSize="14">
+    <!-- Contenedor del Componenete -->
+    <Grid>
+        <!-- Texto Descripcion -->
+        <Border x:Name="bordeTxtDescripcion" BorderBrush="Black" BorderThickness="1" Background="White">
+            <Grid>
+                <TextBox x:Name="TxtDescripcion" FontSize="14" BorderThickness="0" HorizontalAlignment="Left" Width="125" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" LostFocus="TxtDescripcion_PerderFocus" IsReadOnly="True"/>
+                <TextBox x:Name="TxtMarcaDescripcion" Text="Descripcion" Foreground="Gray" FontSize="14" BorderThickness="0" HorizontalAlignment="Left" Width="125" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" GotFocus="TxtDescripcion_Focus" IsReadOnly="True" Visibility="Collapsed"/>
+            </Grid>
+        </Border>
+        <!-- Combo Box Alimento -->
+        <Border x:Name="bordeCmbAlimento" BorderBrush="Black" BorderThickness="1" Margin="124,0,0,0">
+            <ComboBox x:Name="CmbAlimento" BorderThickness="0" DisplayMemberPath="Nombre" SelectedValuePath="Id" IsEditable="False" IsEnabled="False"/>
+        </Border>
+        <!-- Boton Quitar -->
+        <Button x:Name="BtnQuitar" Style="{StaticResource BtnSinHover}" Width="25" Height="{Binding ElementName=TxtDescripcion, Path=Height}" Background="#990000" HorizontalAlignment="Right" MouseEnter="BtnQuitar_RatonDentro" MouseLeave="BtnQuitar_RatonFuera" Click="BtnQuitar_Click">
+            <Image x:Name="ImagenBtnQuitar" Source="/Recursos/BtnQuitar.png"/>
+        </Button>
+    </Grid>
+</UserControl>

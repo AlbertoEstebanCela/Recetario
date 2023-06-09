@@ -1,0 +1,88 @@
+﻿<Window x:Class="Recetario.Ventanas.InventarioVentana"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recetario.Ventanas"
+        xmlns:Componentes="clr-namespace:Recetario.Componentes"
+        mc:Ignorable="d"
+        Title="Inventario" Height="450" Width="850" MinHeight="450" MinWidth="850" FontSize="18">
+    
+    <!-- Contenedor de la ventana -->
+    <Grid>
+        <!-- Menu Opciones -->
+        <Componentes:Menu VerticalAlignment="Top"/>
+        <!-- #region Cabecera -->
+        <!-- Boton Principal-->
+        <Button x:Name="BtnPrincipal" Content="Principal" Foreground="White" FontWeight="Bold" Margin="5,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="250" Background="#225AFF" BorderThickness="1.5" BorderBrush="Black" MouseEnter="BtnPrincipal_RatonDentro" MouseLeave="BtnPrincipal_RatonFuera" Click="BtnPrincipal_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!-- Barra de Busqueda -->
+        <Label Content="Buscar: " Margin="260,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="75" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TxtBuscar" TextWrapping="Wrap" Margin="335,30,290,0" VerticalAlignment="Top" Height="50" VerticalContentAlignment="Center" TextChanged="TxtBuscar_TextChanged">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <!-- Boton Add Inventario (Añade nueva alimento al inventario) -->
+        <Button Style="{StaticResource BtnSinHover}" Margin="0,30,235,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" MouseEnter="BtnAddInventario_RatonDentro" MouseLeave="BtnAddInventario_RatonFuera" Click="BtnAddInventario_Click">
+            <Image x:Name="BtnAddInventario_Imagen" Source="/Recursos/BtnAdd.png"/>
+        </Button>
+        <!-- Boton Lista Compra -->
+        <Button Style="{StaticResource BtnSinHover}" Margin="0,30,160,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="50" Width="50" MouseEnter="BtnListaCompra_RatonDentro" MouseLeave="BtnListaCompra_RatonFuera" Click="BtnListaCompra_Click">
+            <Image x:Name="BtnListaCompra_Imagen" Source="/Recursos/BtnListaCompra.png"/>
+        </Button>
+        <!-- Boton Inventario -->
+        <Button x:Name="BtnInventario" Content="Mi Inventario" Foreground="Black" FontWeight="Bold" Margin="0,30,5,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Height="50" Background="#99ccff" BorderThickness="1.5" BorderBrush="Black">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!-- #endregion -->
+        <!-- Contenedor Tabla de los Alimentos en el inventario -->
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5,85,5,5" Background="#E6E6E6" CornerRadius="5">
+            <DataGrid x:Name="TableInventario" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <!-- Columna Imagen -->
+                    <DataGridTemplateColumn Header="Imagen" Width="100" MinWidth="100" MaxWidth="100" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Alimento.ImagenCargada}" Stretch="Uniform"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!-- Columna Alimento -->
+                    <DataGridTextColumn Header="Alimento" Binding="{Binding Alimento.Nombre}" Width="*" IsReadOnly="True"/>
+                    <!-- Columna Categoria -->
+                    <DataGridTextColumn Header="Categoria" Binding="{Binding Alimento.Categoria.Nombre}" Width="*" IsReadOnly="True"/>
+                    <!-- Columna Cantidad -->
+                    <DataGridTemplateColumn Header="Cantidad" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Cantidad}" LostFocus="Cantidad_LostFocus" PreviewTextInput="Cantidad_PreviewTextInput" MaxLength="3"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!-- Columna Lista Compra -->
+                    <DataGridTemplateColumn Header="ListaCompra" Width="125" MinWidth="125" MaxWidth="125" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource BtnSinHover}" Width="50" Height="50" MouseEnter="BtnAddListaCompra_RatonDentro" MouseLeave="BtnAddListaCompra_RatonFuera" Click="BtnAddListaCompra_Click">
+                                    <Image Source="/Recursos/BtnListaCompra.png"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Window>

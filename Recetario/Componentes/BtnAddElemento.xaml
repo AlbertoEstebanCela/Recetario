@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Recetario.Componentes.BtnAddElemento"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Recetario.Componentes"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="500">
+    <!-- Contenedor del Componente -->
+    <WrapPanel x:Name="ContenedorBtnAdd" Width="500" Height="50" HorizontalAlignment="Left">
+        <!-- Boton Add -->
+        <Button x:Name="BtnAdd" Style="{StaticResource BtnSinHover}" MouseEnter="BtnAdd_RatonDentro" MouseLeave="BtnAdd_RatonFuera" Click="BtnAdd_Click">
+            <Image x:Name="ImagenBtnAdd" Source="/Recursos/BtnAdd.png"/>
+        </Button>
+    </WrapPanel>
+</UserControl>
